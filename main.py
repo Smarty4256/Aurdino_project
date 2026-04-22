@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-import serial
-import time
+# import serial
+# import time
 
 app = FastAPI()
 
-arduino = serial.Serial('COM7', 9600)  # change COM
-time.sleep(1)
+# arduino = serial.Serial('COM7', 9600)  # change COM
+# time.sleep(1)
 
 @app.get("/")
 def home():
