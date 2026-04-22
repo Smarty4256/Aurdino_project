@@ -84,6 +84,54 @@ streamlit run app.py
 * Connect LED to Arduino (with resistor)
 * Upload Arduino serial code
 * Ensure correct COM port in Python
+## 🔌 Arduino Code
+
+Upload the following code to your Arduino using Arduino IDE:
+
+```cpp
+int ledPin = 7;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char data = Serial.read();
+
+    if (data == '1') {
+      digitalWrite(ledPin, HIGH); // LED ON
+    } 
+    else if (data == '0') {
+      digitalWrite(ledPin, LOW);  // LED OFF
+    }
+  }
+}
+```
+
+---
+
+## ⚙️ How it works
+
+* Python sends `'1'` → LED turns ON
+* Python sends `'0'` → LED turns OFF
+* Communication happens via USB Serial
+
+---
+
+## 🔗 Connection
+
+* LED Anode (+) → Pin 7
+* LED Cathode (–) → GND (through resistor)
+
+---
+
+## ⚠️ Important
+
+* Match baud rate (`9600`) in both Arduino and Python
+* Ensure correct COM port in your Python code
+
 
 ---
 
