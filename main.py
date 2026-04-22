@@ -10,14 +10,10 @@ app = FastAPI()
 @app.get("/")
 def home():
     return {"msg": "API running"}
-
 @app.get("/on")
 def led_on():
-    arduino.write(b'1')
     return {"status": "ON"}
-
 @app.get("/off")
 def led_off():
-    arduino.write(b'0')
     return {"status": "OFF"}
 
